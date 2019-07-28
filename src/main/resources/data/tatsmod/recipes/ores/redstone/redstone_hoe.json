@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "xx ",
+    " # ",
+    " # "
+  ],
+  "key": {
+	"x": {
+      "item": "minecraft:redstone_block"
+    },
+	"#": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "tatsmod:redstone_hoe"
+  }
+}

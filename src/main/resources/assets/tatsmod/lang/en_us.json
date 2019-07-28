@@ -1,0 +1,52 @@
+{
+	"_comment": "Blocks",
+	
+	"_comment": "Items",
+	
+	"_comment": "Stone Tools",
+		"_comment": "Andesite",
+		"item.tatsmod.andesite_pickaxe": "Andesite Pickaxe",
+		"item.tatsmod.andesite_axe": "Andesite Axe",
+		"item.tatsmod.andesite_shovel": "Andesite Shovel",
+		"item.tatsmod.andesite_hoe": "Andesite Hoe",
+		"item.tatsmod.andesite_sword": "Andesite Sword",
+		
+		"_comment": "Diorite",
+		"item.tatsmod.diorite_pickaxe": "Diorite Pickaxe",
+		"item.tatsmod.diorite_axe": "Diorite Axe",
+		"item.tatsmod.diorite_shovel": "Diorite Shovel",
+		"item.tatsmod.diorite_hoe": "Diorite Hoe",
+		"item.tatsmod.diorite_sword": "Diorite Sword",
+		
+		"_comment": "Granite",
+		"item.tatsmod.granite_pickaxe": "Granite Pickaxe",
+		"item.tatsmod.granite_axe": "Granite Axe",
+		"item.tatsmod.granite_shovel": "Granite Shovel",
+		"item.tatsmod.granite_hoe": "Granite Hoe",
+		"item.tatsmod.granite_sword": "Granite Sword",
+	
+	"_comment": "Ores",
+		"_comment": "Emerald",
+		"item.tatsmod.emerald_pickaxe": "Emerald Pickaxe",
+		"item.tatsmod.emerald_axe": "Emerald Axe",
+		"item.tatsmod.emerald_shovel": "Emerald Shovel",
+		"item.tatsmod.emerald_hoe": "Emerald Hoe",
+		"item.tatsmod.emerald_sword": "Emerald Sword",
+		
+		"_comment": "Redstone",
+		"item.tatsmod.redstone_pickaxe": "Redstone Pickaxe",
+		"item.tatsmod.redstone_axe": "Redstone Axe",
+		"item.tatsmod.redstone_shovel": "Redstone Shovel",
+		"item.tatsmod.redstone_hoe": "Redstone Hoe",
+		"item.tatsmod.redstone_sword": "Redstone Sword",
+		
+		"_comment": "Lapis",
+		"item.tatsmod.lapis_lazuli_pickaxe": "Lapis Lazuli Pickaxe",
+		"item.tatsmod.lapis_lazuli_axe": "Lapis Lazuli Axe",
+		"item.tatsmod.lapis_lazuli_shovel": "Lapis Lazuli Shovel",
+		"item.tatsmod.lapis_lazuli_hoe": "Lapis Lazuli Hoe",
+		"item.tatsmod.lapis_lazuli_sword": "Lapis Lazuli Sword",
+	
+	"_comment": "Creative Tabs",
+	"itemGroup.tatsmodtab": "Tools & Tweaks"
+}

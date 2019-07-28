@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "xxx",
+    " # ",
+    " # "
+  ],
+  "key": {
+	"x": {
+      "item": "minecraft:granite"
+    },
+	"#": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "tatsmod:granite_pickaxe"
+  }
+}

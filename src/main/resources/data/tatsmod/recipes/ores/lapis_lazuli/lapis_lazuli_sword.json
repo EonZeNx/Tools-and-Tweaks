@@ -1,0 +1,19 @@
+\{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " x ",
+    " x ",
+    " # "
+  ],
+  "key": {
+	"x": {
+      "item": "minecraft:lapis_lazuli"
+    },
+	"#": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "tatsmod:lapis_lazuli_sword"
+  }
+}

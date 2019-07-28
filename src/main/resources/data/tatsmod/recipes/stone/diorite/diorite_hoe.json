@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "xx ",
+    " # ",
+    " # "
+  ],
+  "key": {
+	"x": {
+      "item": "minecraft:diorite"
+    },
+	"#": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "tatsmod:diorite_hoe"
+  }
+}

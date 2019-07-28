@@ -1,0 +1,6 @@
+{
+    "parent": "item/handheld",
+    "textures": {
+        "layer0": "tatsmod:item/ores/lapis_lazuli/lapis_lazuli_sword"
+    }
+}

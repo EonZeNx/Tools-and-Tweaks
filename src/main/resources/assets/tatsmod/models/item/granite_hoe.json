@@ -1,0 +1,6 @@
+{
+    "parent": "item/handheld",
+    "textures": {
+        "layer0": "tatsmod:item/stone/granite/granite_hoe"
+    }
+}
