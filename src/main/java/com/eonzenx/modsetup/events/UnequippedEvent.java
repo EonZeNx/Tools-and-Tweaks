@@ -7,17 +7,17 @@ import net.minecraft.item.Item;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.fml.common.Mod;
 
-public class EquippedEvent extends Event {
+public class UnequippedEvent extends Event {
 	
 	protected PlayerEntity player;
 	protected Item equippedItem;
 	
-	public EquippedEvent(PlayerEntity player, Item equippedItem) {
+	public UnequippedEvent(PlayerEntity player, Item equippedItem) {
 		super();
 		this.player = player;
 		this.equippedItem = equippedItem;
 		
-		TATsMod.LOGGER.debug("INFO: Equipped " + equippedItem.getRegistryName().toString());
+		TATsMod.LOGGER.debug("INFO: Unequipped " + equippedItem.getRegistryName().toString());
 	}
 	
 	public PlayerEntity getPlayer() {

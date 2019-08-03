@@ -9,7 +9,5 @@ public class BootsEquipEvent extends EquippedEvent {
 
 	public BootsEquipEvent(PlayerEntity player, Item equippedItem) {
 		super(player, equippedItem);
-
-		System.out.println("Equipped " + equippedItem.getRegistryName().toString());
 	}
 }

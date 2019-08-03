@@ -8,7 +8,5 @@ public class FullSetUnequipped extends FullArmorSetEvent {
 	
 	public FullSetUnequipped(PlayerEntity player, String armorSetName) {
 		super(player, armorSetName);
-		
-		System.out.println("Equipped " + armorSetName);
 	}
 }

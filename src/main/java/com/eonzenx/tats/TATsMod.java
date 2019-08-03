@@ -18,6 +18,7 @@ import org.apache.logging.log4j.Logger;
 import com.eonzenx.modsetup.armor.ArmorMaterialList;
 import com.eonzenx.modsetup.armor.ModArmor;
 import com.eonzenx.modsetup.items.ModItemsList;
+import com.eonzenx.modsetup.player.ModArmorEffects;
 import com.eonzenx.modsetup.setup.ClientProxy;
 import com.eonzenx.modsetup.setup.IProxy;
 import com.eonzenx.modsetup.setup.TATsModSetup;
@@ -35,8 +36,9 @@ public class TATsMod
 {
 	public static final String MOD_ID = "tatsmod";
 	public static IProxy proxy = DistExecutor.runForDist(() -> () -> new ClientProxy(), () -> () -> new ServerProxy());
-    private static final Logger LOGGER = LogManager.getLogger();
+	public static final Logger LOGGER = LogManager.getLogger();
     public static TATsModSetup setup = new TATsModSetup();
+    public static ModArmorEffects modArmFX = new ModArmorEffects();
     
     public TATsMod() {
         // Register methods for modloading
@@ -90,7 +92,7 @@ public class TATsMod
 	            	
 	            	// Ore tools
 	            		// Emerald
-        				ModItemsList.EMERALD_AXE = new ModAxe("emerald_axe", ToolMaterialList.EMERALD, 7F, -3.2F, new Item.Properties()),
+	            		ModItemsList.EMERALD_AXE = new ModAxe("emerald_axe", ToolMaterialList.EMERALD, 7F, -3.2F, new Item.Properties()),
 	            		ModItemsList.EMERALD_HOE = new ModHoe("emerald_hoe", ToolMaterialList.EMERALD, -2F, new Item.Properties()),
 	            		ModItemsList.EMERALD_PICKAXE = new ModPickaxe("emerald_pickaxe", ToolMaterialList.EMERALD, 1, -2.8F, new Item.Properties()),
 	            		ModItemsList.EMERALD_SHOVEL = new ModShovel("emerald_shovel", ToolMaterialList.EMERALD, 1.5F, -3F, new Item.Properties()),
@@ -129,6 +131,7 @@ public class TATsMod
 	            		ModItemsList.LAPIS_LAZULI_LEGGINGS = new ModArmor("lapis_lazuli_leggings", ArmorMaterialList.LAPIS_LAZULI, EquipmentSlotType.LEGS, new Item.Properties()),
 	            		ModItemsList.LAPIS_LAZULI_BOOTS = new ModArmor("lapis_lazuli_boots", ArmorMaterialList.LAPIS_LAZULI, EquipmentSlotType.FEET, new Item.Properties())
             );
+            modArmFX.init();
         }
     }
 }

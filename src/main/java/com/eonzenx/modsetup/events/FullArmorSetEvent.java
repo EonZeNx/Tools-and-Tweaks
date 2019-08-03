@@ -1,5 +1,7 @@
 package com.eonzenx.modsetup.events;
 
+import com.eonzenx.tats.TATsMod;
+
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraftforge.eventbus.api.Event;
 
@@ -12,6 +14,8 @@ public class FullArmorSetEvent extends Event {
 		super();
 		this.player = player;
 		this.armorSetName = armorSetName;
+		
+		TATsMod.LOGGER.debug("INFO: Equipped " + armorSetName + " set");
 	}
 	
 	public PlayerEntity getPlayer() {
