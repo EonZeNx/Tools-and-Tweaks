@@ -1,6 +1,6 @@
 {
     "parent": "item/handheld",
     "textures": {
-        "layer0": "tatsmod:item/ores/emerald/emerald_hoe"
+        "layer0": "tatsmod:item/ores/emerald_tools/emerald_hoe"
     }
 }
