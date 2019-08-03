@@ -5,7 +5,6 @@ import com.eonzenx.tats.TATsMod;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraftforge.eventbus.api.Event;
-import net.minecraftforge.fml.common.Mod;
 
 public class EquippedEvent extends Event {
 	
@@ -17,7 +16,7 @@ public class EquippedEvent extends Event {
 		this.player = player;
 		this.equippedItem = equippedItem;
 		
-		TATsMod.LOGGER.debug("INFO: Equipped " + equippedItem.getRegistryName().toString());
+		TATsMod.LOGGER.info("Equipped " + equippedItem.getRegistryName().toString());
 	}
 	
 	public PlayerEntity getPlayer() {

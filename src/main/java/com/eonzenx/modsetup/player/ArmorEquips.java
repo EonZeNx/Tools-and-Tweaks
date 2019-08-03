@@ -39,53 +39,61 @@ public class ArmorEquips {
 	private static Item currentBoots = empty;
 	
 	@SubscribeEvent
-	public static void onPlayerTick(PlayerTickEvent event) {
-		
+	public static void helmetCheck(PlayerTickEvent event) {
 		// Get player
 		PlayerEntity thisPlayer = event.player;
 		
-		// Get armor worn
-		currentHelmet = thisPlayer.getItemStackFromSlot(EquipmentSlotType.HEAD).getItem();
-		currentChestPiece = thisPlayer.getItemStackFromSlot(EquipmentSlotType.CHEST).getItem();
-		currentLegs = thisPlayer.getItemStackFromSlot(EquipmentSlotType.LEGS).getItem();
-		currentBoots = thisPlayer.getItemStackFromSlot(EquipmentSlotType.FEET).getItem();
-		
 		// helmet
-		if ((currentHelmet.getRegistryName() != empty.getRegistryName()) && (currentHelmet.getRegistryName() != lastHelmet.getRegistryName())) {
+		currentHelmet = thisPlayer.getItemStackFromSlot(EquipmentSlotType.HEAD).getItem();
+		if ((currentHelmet != empty) && (currentHelmet != lastHelmet)) {
 			lastHelmet = currentHelmet;
-			MinecraftForge.EVENT_BUS.post(new HelmetEquipEvent(thisPlayer, lastHelmet));
-			
-		} else if ((currentHelmet.getRegistryName() == empty.getRegistryName()) && (lastHelmet.getRegistryName() != empty.getRegistryName())) {
+			MinecraftForge.EVENT_BUS.post(new HelmetEquipEvent(thisPlayer, currentHelmet));
+		} else if ((currentHelmet == empty) && (lastHelmet != empty)) {
 			MinecraftForge.EVENT_BUS.post(new HelmetUnequipEvent(thisPlayer, lastHelmet));
 			lastHelmet = empty;
 		}
+	}
+	@SubscribeEvent
+	public static void chestpieceCheck(PlayerTickEvent event) {
+		// Get player
+		PlayerEntity thisPlayer = event.player;
+		currentChestPiece = thisPlayer.getItemStackFromSlot(EquipmentSlotType.CHEST).getItem();
 		
 		// chestpiece
-		if ((currentChestPiece.getRegistryName() != empty.getRegistryName()) && (currentChestPiece != lastChestPiece)) {
+		if ((currentChestPiece != empty) && (currentChestPiece != lastChestPiece)) {
+			MinecraftForge.EVENT_BUS.post(new ChestPieceEquipEvent(thisPlayer, currentChestPiece));
 			lastChestPiece = currentChestPiece;
-			MinecraftForge.EVENT_BUS.post(new ChestPieceEquipEvent(thisPlayer, lastChestPiece));
-			
-		} else if ((currentChestPiece.getRegistryName() == empty.getRegistryName()) && (lastChestPiece.getRegistryName() != empty.getRegistryName())) {
+		} else if ((currentChestPiece == empty) && (lastChestPiece != empty)) {
 			MinecraftForge.EVENT_BUS.post(new ChestPieceUnequipEvent(thisPlayer, lastChestPiece));
 			lastChestPiece = empty;
 		}
+	}
+	@SubscribeEvent
+	public static void leggingsCheck(PlayerTickEvent event) {
+		// Get player
+		PlayerEntity thisPlayer = event.player;
+		currentLegs = thisPlayer.getItemStackFromSlot(EquipmentSlotType.LEGS).getItem();
 		
 		// leg piece
-		if ((currentLegs.getRegistryName() != empty.getRegistryName()) && (currentLegs != lastLegs)) {
+		if ((currentLegs != empty) && (currentLegs != lastLegs)) {
+			MinecraftForge.EVENT_BUS.post(new LeggingsEquipEvent(thisPlayer, currentLegs));
 			lastLegs = currentLegs;
-			MinecraftForge.EVENT_BUS.post(new LeggingsEquipEvent(thisPlayer, lastLegs));
-			
-		} else if ((currentLegs.getRegistryName() == empty.getRegistryName()) && (lastLegs.getRegistryName() != empty.getRegistryName())) {
+		} else if ((currentLegs == empty) && (lastLegs != empty)) {
 			MinecraftForge.EVENT_BUS.post(new LeggingsUnequipEvent(thisPlayer, lastLegs));
 			lastLegs = empty;
 		}
+	}
+	@SubscribeEvent
+	public static void bootsCheck(PlayerTickEvent event) {
+		// Get player
+		PlayerEntity thisPlayer = event.player;
+		currentBoots = thisPlayer.getItemStackFromSlot(EquipmentSlotType.FEET).getItem();
 		
 		// boots
-		if ((currentBoots.getRegistryName() != empty.getRegistryName()) && (currentBoots != lastBoots)) {
+		if ((currentBoots != empty) && (currentBoots != lastBoots)) {
+			MinecraftForge.EVENT_BUS.post(new BootsEquipEvent(thisPlayer, currentBoots));
 			lastBoots = currentBoots;
-			MinecraftForge.EVENT_BUS.post(new BootsEquipEvent(thisPlayer, lastBoots));
-			
-		} else if ((currentBoots.getRegistryName() == empty.getRegistryName()) && (lastBoots.getRegistryName() != empty.getRegistryName())) {
+		} else if ((currentBoots == empty) && (lastBoots != empty)) {
 			MinecraftForge.EVENT_BUS.post(new BootsUnequipEvent(thisPlayer, lastBoots));
 			lastBoots = empty;
 		}

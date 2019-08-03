@@ -69,63 +69,56 @@ public class ModArmorEffects {
 /*	potion, duration, amplifier, ambient, showParticles, showIcon	*/
 	
 	public static void checkArmorSet(PlayerEntity playerEntity, Item helmet, Item chest, Item legs, Item boots) {
-		if (helmet == null || chest == null || legs == null || boots == null) {
-			TATsMod.LOGGER.debug("ERROR: equippedItem was none, skipping...");
-			return;
+		TATsMod.LOGGER.info("Armor set was checked");
+		
+		TATsMod.LOGGER.info(helmet.getRegistryName().toString());
+		TATsMod.LOGGER.info(chest.getRegistryName().toString());
+		TATsMod.LOGGER.info(legs.getRegistryName().toString());
+		TATsMod.LOGGER.info(boots.getRegistryName().toString());
+		
+		// redstone set
+		if (helmet == redstoneSet[0]) {
+			if ((chest == redstoneSet[1]) &&
+				(legs == redstoneSet[2]) &&
+				(boots == redstoneSet[3])
+			) {
+				TATsMod.LOGGER.info("Equipped full redstone set");
+				playerEntity.addPotionEffect(new EffectInstance(Effects.SPEED, 999999999, 0, false, false, true));
+				playerEntity.addPotionEffect(new EffectInstance(Effects.JUMP_BOOST, 999999999, 1, false, false, true));
+			}
 		} else {
-			// redstone set
-			if (helmet.getRegistryName() == redstoneSet[0].getRegistryName()) {
-				if ((chest.getRegistryName() == redstoneSet[1].getRegistryName()) &&
-					(legs.getRegistryName() == redstoneSet[2].getRegistryName()) &&
-					(boots.getRegistryName() == redstoneSet[3].getRegistryName())
+			playerEntity.removeActivePotionEffect(Effects.SPEED);
+			playerEntity.removeActivePotionEffect(Effects.JUMP_BOOST);
+		}
+		
+		// emerald set
+		if (helmet == emeraldSet[0]) {
+			if ((chest == emeraldSet[1]) &&
+					(legs == emeraldSet[2]) &&
+					(boots == emeraldSet[3])
 				) {
-					TATsMod.LOGGER.debug("INFO: Equipped full redstone set");
-					playerEntity.addPotionEffect(new EffectInstance(Effects.SPEED, 999999999, 0, false, false, true));
-					playerEntity.addPotionEffect(new EffectInstance(Effects.JUMP_BOOST, 999999999, 1, false, false, true));
+					TATsMod.LOGGER.info("Equipped full emerald set");
+					playerEntity.addPotionEffect(new EffectInstance(Effects.HERO_OF_THE_VILLAGE, 999999999, 0, false, false, true));
+					playerEntity.addPotionEffect(new EffectInstance(Effects.LUCK, 999999999, 0, false, false, true));
 				}
-			} else {
-				playerEntity.removeActivePotionEffect(Effects.SPEED);
-				playerEntity.removeActivePotionEffect(Effects.JUMP_BOOST);
+		} else {
+			playerEntity.removeActivePotionEffect(Effects.HERO_OF_THE_VILLAGE);
+			playerEntity.removeActivePotionEffect(Effects.LUCK);
+		}
+		
+		// lapis lazuli set
+		if (helmet == lapisLazuliSet[0]) {
+			if ((chest == lapisLazuliSet[1]) &&
+					(legs == lapisLazuliSet[2]) &&
+					(boots == lapisLazuliSet[3])
+				) {
+					TATsMod.LOGGER.info("Equipped full lapis lazuli set");
+					playerEntity.addPotionEffect(new EffectInstance(Effects.DOLPHINS_GRACE, 999999999, 0, false, false, true));
+					playerEntity.addPotionEffect(new EffectInstance(Effects.WATER_BREATHING, 999999999, 0, false, false, true));
 			}
-			
-			// emerald set
-			if (helmet.getRegistryName() == emeraldSet[0].getRegistryName()) {
-				if ((chest.getRegistryName() == emeraldSet[1].getRegistryName()) &&
-						(legs.getRegistryName() == emeraldSet[2].getRegistryName()) &&
-						(boots.getRegistryName() == emeraldSet[3].getRegistryName())
-					) {
-						TATsMod.LOGGER.debug("INFO: Equipped full emerald set");
-						playerEntity.addPotionEffect(new EffectInstance(Effects.HERO_OF_THE_VILLAGE, 999999999, 0, false, false, true));
-						playerEntity.addPotionEffect(new EffectInstance(Effects.LUCK, 999999999, 0, false, false, true));
-					}
-			} else {
-				playerEntity.removeActivePotionEffect(Effects.SPEED);
-				playerEntity.removeActivePotionEffect(Effects.JUMP_BOOST);
-				
-				playerEntity.removeActivePotionEffect(Effects.HERO_OF_THE_VILLAGE);
-				playerEntity.removeActivePotionEffect(Effects.LUCK);
-			}
-			
-			// lapis lazuli set
-			if (helmet.getRegistryName() == lapisLazuliSet[0].getRegistryName()) {
-				if ((chest.getRegistryName() == lapisLazuliSet[1].getRegistryName()) &&
-						(legs.getRegistryName() == lapisLazuliSet[2].getRegistryName()) &&
-						(boots.getRegistryName() == lapisLazuliSet[3].getRegistryName())
-					) {
-						TATsMod.LOGGER.debug("INFO: Equipped full lapis lazuli set");
-						playerEntity.addPotionEffect(new EffectInstance(Effects.DOLPHINS_GRACE, 999999999, 0, false, false, true));
-						playerEntity.addPotionEffect(new EffectInstance(Effects.WATER_BREATHING, 999999999, 0, false, false, true));
-				}
-			} else {
-				playerEntity.removeActivePotionEffect(Effects.SPEED);
-				playerEntity.removeActivePotionEffect(Effects.JUMP_BOOST);
-				
-				playerEntity.removeActivePotionEffect(Effects.HERO_OF_THE_VILLAGE);
-				playerEntity.removeActivePotionEffect(Effects.LUCK);
-				
-				playerEntity.removeActivePotionEffect(Effects.DOLPHINS_GRACE);
-				playerEntity.removeActivePotionEffect(Effects.WATER_BREATHING);
-			}
+		} else {
+			playerEntity.removeActivePotionEffect(Effects.DOLPHINS_GRACE);
+			playerEntity.removeActivePotionEffect(Effects.WATER_BREATHING);
 		}
 	}
 	
@@ -136,16 +129,11 @@ public class ModArmorEffects {
 		Item equippedItem = event.getEquippedItem();
 		
 		// Check player just in case
-		if (playerEntity == null) {
-			TATsMod.LOGGER.debug("ERROR: Player that equipped helmet == null !!");
+		if ((playerEntity == null) || (equippedItem == null)) {
+			TATsMod.LOGGER.error("Player or Item == null, skipping...");
 		} else {
-			if (equippedItem == null) {
-				TATsMod.LOGGER.debug("ERROR: Equipped helmet == null !!");
-			} else {
-				TATsMod.LOGGER.debug("INFO: Equipped ANY helmet");
-				equippedHelmet = equippedItem;
-				checkArmorSet(playerEntity, equippedItem, equippedChestpiece, equippedLeggings, equippedBoots);
-			}
+			checkArmorSet(playerEntity, equippedItem, equippedChestpiece, equippedLeggings, equippedBoots);
+			equippedHelmet = equippedItem;
 		}
 	}
 	@SubscribeEvent
@@ -154,15 +142,11 @@ public class ModArmorEffects {
 		Item equippedItem = event.getEquippedItem();
 		
 		// Check player & the item, just in case
-		if (playerEntity == null) {
-			TATsMod.LOGGER.debug("ERROR: Player that equipped chestpiece == null !!");
+		if ((playerEntity == null) || (equippedItem == null)) {
+			TATsMod.LOGGER.error("Player or Item == null, skipping...");
 		} else {
-			if (equippedItem == null) {
-				TATsMod.LOGGER.debug("ERROR: Equipped chestpiece == null !!");
-			} else {
-				equippedChestpiece = equippedItem;
-				checkArmorSet(playerEntity, equippedHelmet, equippedItem, equippedLeggings, equippedBoots);
-			}
+			checkArmorSet(playerEntity, equippedHelmet, equippedItem, equippedLeggings, equippedBoots);
+			equippedChestpiece = equippedItem;
 		}
 	}
 	@SubscribeEvent
@@ -171,15 +155,11 @@ public class ModArmorEffects {
 		Item equippedItem = event.getEquippedItem();
 		
 		// Check player & the item, just in case
-		if (playerEntity == null) {
-			TATsMod.LOGGER.debug("ERROR: Player that equipped leggings == null !!");
+		if ((playerEntity == null) || (equippedItem == null)) {
+			TATsMod.LOGGER.error("Player or Item == null, skipping...");
 		} else {
-			if (equippedItem == null) {
-				TATsMod.LOGGER.debug("ERROR: Equipped leggings == null !!");
-			} else {
-				equippedLeggings = equippedItem;
-				checkArmorSet(playerEntity, equippedHelmet, equippedChestpiece, equippedItem, equippedBoots);
-			}
+			equippedLeggings = equippedItem;
+			checkArmorSet(playerEntity, equippedHelmet, equippedChestpiece, equippedItem, equippedBoots);
 		}
 	}
 	@SubscribeEvent
@@ -188,15 +168,11 @@ public class ModArmorEffects {
 		Item equippedItem = event.getEquippedItem();
 		
 		// Check player & the item, just in case
-		if (playerEntity == null) {
-			TATsMod.LOGGER.debug("ERROR: Player that equipped boots == null !!");
+		if ((playerEntity == null) || (equippedItem == null)) {
+			TATsMod.LOGGER.error("Player or Item == null, skipping...");
 		} else {
-			if (equippedItem == null) {
-				TATsMod.LOGGER.debug("ERROR: Equipped boots == null !!");
-			} else {
-				equippedBoots = equippedItem;
-				checkArmorSet(playerEntity, equippedHelmet, equippedChestpiece, equippedLeggings, equippedItem);
-			}
+			checkArmorSet(playerEntity, equippedHelmet, equippedChestpiece, equippedLeggings, equippedItem);
+			equippedBoots = equippedItem;
 		}
 	}
 	
@@ -207,15 +183,11 @@ public class ModArmorEffects {
 		Item equippedItem = event.getEquippedItem();
 		
 		// Check player & the item, just in case
-		if (playerEntity == null) {
-			TATsMod.LOGGER.debug("ERROR: Player that unequipped boots == null !!");
+		if ((playerEntity == null) || (equippedItem == null)) {
+			TATsMod.LOGGER.error("Player or Item == null, skipping...");
 		} else {
-			if (equippedItem == null) {
-				TATsMod.LOGGER.debug("ERROR: Unequipped boots == null !!");
-			} else {
-				equippedHelmet = empty;
-				checkArmorSet(playerEntity, empty, equippedChestpiece, equippedLeggings, equippedBoots);
-			}
+			checkArmorSet(playerEntity, empty, equippedChestpiece, equippedLeggings, equippedBoots);
+			equippedHelmet = empty;
 		}
 	}
 	@SubscribeEvent
@@ -224,15 +196,11 @@ public class ModArmorEffects {
 		Item equippedItem = event.getEquippedItem();
 		
 		// Check player & the item, just in case
-		if (playerEntity == null) {
-			TATsMod.LOGGER.debug("ERROR: Player that unequipped chestpiece == null !!");
+		if ((playerEntity == null) || (equippedItem == null)) {
+			TATsMod.LOGGER.error("Player or Item == null, skipping...");
 		} else {
-			if (equippedItem == null) {
-				TATsMod.LOGGER.debug("ERROR: Unequipped chestpiece == null !!");
-			} else {
-				equippedChestpiece = empty;
-				checkArmorSet(playerEntity, equippedHelmet, empty, equippedLeggings, equippedBoots);
-			}
+			checkArmorSet(playerEntity, equippedHelmet, empty, equippedLeggings, equippedBoots);
+			equippedChestpiece = empty;
 		}
 	}
 	@SubscribeEvent
@@ -241,15 +209,11 @@ public class ModArmorEffects {
 		Item equippedItem = event.getEquippedItem();
 		
 		// Check player & the item, just in case
-		if (playerEntity == null) {
-			TATsMod.LOGGER.debug("ERROR: Player that unequipped leggings == null !!");
+		if ((playerEntity == null) || (equippedItem == null)) {
+			TATsMod.LOGGER.error("Player or Item == null, skipping...");
 		} else {
-			if (equippedItem == null) {
-				TATsMod.LOGGER.debug("ERROR: Unequipped leggings == null !!");
-			} else {
-				equippedLeggings = empty;
-				checkArmorSet(playerEntity, equippedHelmet, equippedChestpiece, empty, equippedBoots);
-			}
+			equippedLeggings = empty;
+			checkArmorSet(playerEntity, equippedHelmet, equippedChestpiece, empty, equippedBoots);
 		}
 	}
 	@SubscribeEvent
@@ -258,15 +222,11 @@ public class ModArmorEffects {
 		Item equippedItem = event.getEquippedItem();
 		
 		// Check player & the item, just in case
-		if (playerEntity == null) {
-			TATsMod.LOGGER.debug("ERROR: Player that unequipped boots == null !!");
+		if ((playerEntity == null) || (equippedItem == null)) {
+			TATsMod.LOGGER.error("Player or Item == null, skipping...");
 		} else {
-			if (equippedItem == null) {
-				TATsMod.LOGGER.debug("ERROR: Unequipped leggings == null !!");
-			} else {
-				equippedBoots = empty;
-				checkArmorSet(playerEntity, equippedHelmet, equippedChestpiece, equippedLeggings, empty);
-			}
+			checkArmorSet(playerEntity, equippedHelmet, equippedChestpiece, equippedLeggings, empty);
+			equippedBoots = empty;
 		}
 	}
 }
