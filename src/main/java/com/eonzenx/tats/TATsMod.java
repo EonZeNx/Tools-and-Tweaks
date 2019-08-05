@@ -17,6 +17,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.eonzenx.modsetup.armor.ArmorMaterialList;
 import com.eonzenx.modsetup.armor.ModArmor;
+import com.eonzenx.modsetup.events.ArmorEqsEventPoster;
 import com.eonzenx.modsetup.items.ModItemsList;
 import com.eonzenx.modsetup.player.ModArmorEffects;
 import com.eonzenx.modsetup.setup.ClientProxy;
@@ -39,6 +40,7 @@ public class TATsMod
 	public static final Logger LOGGER = LogManager.getLogger();
     public static TATsModSetup setup = new TATsModSetup();
     public static ModArmorEffects modArmFX = new ModArmorEffects();
+    public static ArmorEqsEventPoster armorEqEvPost = new ArmorEqsEventPoster();
     
     public TATsMod() {
         // Register methods for modloading
@@ -132,6 +134,7 @@ public class TATsMod
 	            		ModItemsList.LAPIS_LAZULI_BOOTS = new ModArmor("lapis_lazuli_boots", ArmorMaterialList.LAPIS_LAZULI, EquipmentSlotType.FEET, new Item.Properties())
             );
             modArmFX.init();
+            armorEqEvPost.init();
         }
     }
 }

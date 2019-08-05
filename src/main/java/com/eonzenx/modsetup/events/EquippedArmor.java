@@ -6,21 +6,23 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.eventbus.api.Event;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 
-public class ChangedArmor extends Event {
-	
+@Mod.EventBusSubscriber(modid = TATsMod.MOD_ID, bus=Bus.FORGE)
+public class EquippedArmor extends Event {
 	protected static PlayerEntity player;
 	protected static EquipmentSlotType eqSlot;
 	protected static ItemStack oldEq;
 	protected static ItemStack newEq;
 	
-	public ChangedArmor (PlayerEntity player, EquipmentSlotType eqSlot, ItemStack oldEq, ItemStack newEq) {
-		ChangedArmor.player = player;
-		ChangedArmor.eqSlot = eqSlot;
-		ChangedArmor.oldEq = oldEq;
-		ChangedArmor.newEq = newEq;
+	public EquippedArmor (PlayerEntity player, EquipmentSlotType eqSlot, ItemStack oldEq, ItemStack newEq) {
+		EquippedArmor.player = player;
+		EquippedArmor.eqSlot = eqSlot;
+		EquippedArmor.oldEq = oldEq;
+		EquippedArmor.newEq = newEq;
 		
-		TATsMod.LOGGER.info("Old armor piece: " + oldEq.getItem().getRegistryName().toString() + ", new armor piece: " + newEq.getItem().getRegistryName().toString());
+		TATsMod.LOGGER.info("Equipped: " + newEq.getItem().getRegistryName().toString());
 	}
 	
 	public PlayerEntity getPlayer() {
