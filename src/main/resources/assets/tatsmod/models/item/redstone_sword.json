@@ -1,6 +1,6 @@
 {
     "parent": "item/handheld",
     "textures": {
-        "layer0": "tatsmod:item/ores/redstone/redstone_sword"
+        "layer0": "tatsmod:item/ores/redstone_tools/redstone_sword"
     }
 }

@@ -1,0 +1,6 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "tatsmod:item/ores/lapis_lazuli_armor/lapis_lazuli_helmet"
+    }
+}

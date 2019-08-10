@@ -1,6 +1,6 @@
 {
     "parent": "item/handheld",
     "textures": {
-        "layer0": "tatsmod:item/ores/lapis_lazuli/lapis_lazuli_pickaxe"
+        "layer0": "tatsmod:item/ores/lapis_lazuli_tools/lapis_lazuli_pickaxe"
     }
 }
