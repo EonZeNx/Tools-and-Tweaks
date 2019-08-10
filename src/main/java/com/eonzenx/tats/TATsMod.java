@@ -1,6 +1,7 @@
 package com.eonzenx.tats;
 
 import net.minecraft.block.Block;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
@@ -17,6 +18,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.eonzenx.modsetup.armor.ArmorMaterialList;
 import com.eonzenx.modsetup.armor.ModArmor;
+import com.eonzenx.modsetup.enchantment.ModEnchantments;
 import com.eonzenx.modsetup.events.ArmorEqsEventPoster;
 import com.eonzenx.modsetup.items.ModItemsList;
 import com.eonzenx.modsetup.player.ModArmorEffects;
@@ -61,14 +63,24 @@ public class TATsMod
     @EventBusSubscriber(bus=Bus.MOD)
     public static class RegistryEvents {
         @SubscribeEvent
-        public static void onBlocksRegistry(final RegistryEvent.Register<Block> event) {
+        public static void onBlocksRegistry(final RegistryEvent.Register<Block> ev) {
             LOGGER.info("Register new blocks here");
         }
         @SubscribeEvent
-        public static void onItemsRegistry(final RegistryEvent.Register<Item> event) {
+        public static void onEnchantsRegistry(final RegistryEvent.Register<Enchantment> ev) {
+        	LOGGER.info("Register new enchantments here");
+    		
+    		ev.getRegistry().registerAll(
+    				ModEnchantments.THUNDER,
+    				ModEnchantments.HEAL_POSITIVE,
+    				ModEnchantments.HEAL_NEGATIVE
+    		);
+        }
+        @SubscribeEvent
+        public static void onItemsRegistry(final RegistryEvent.Register<Item> ev) {
             LOGGER.info("Register new items here");
             
-            event.getRegistry().registerAll(
+            ev.getRegistry().registerAll(
             		
             		// Stone tools
 	            		// Andesite tools

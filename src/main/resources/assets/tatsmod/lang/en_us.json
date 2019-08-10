@@ -3,6 +3,11 @@
 	
 	"_comment": "Items",
 	
+	"_comment": "Enchantments",
+		"enchantment.tatsmod.thunder": "Thunder",
+		"enchantment.tatsmod.health_move_pos": "Health Pull",
+		"enchantment.tatsmod.health_move_neg": "Health Push",
+	
 	"_comment": "Stone Tools",
 		"_comment": "Andesite",
 		"item.tatsmod.andesite_pickaxe": "Andesite Pickaxe",
